@@ -1,0 +1,10 @@
+Dear all,
+
+Whatsapp Group: https://chat.whatsapp.com/LhT3kgjltKI60121xBeq4d
+Git Repository: https://github.com/BornaMD/Exam-Assignment-CP4EOR-18
+
+Borná
+p.s. Please invite others, I do not have any social info of them. 
+
+The assignment is on a maze, my guess is that it is about creating a program that solves a maze without knowing in what form the maze itself is.
+What do you guys think?
