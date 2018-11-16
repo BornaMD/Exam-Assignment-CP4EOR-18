@@ -34,28 +34,22 @@ def is_dead_end(self,x,y):
         if maze_array[x][y]==1:
             return False
         #Check all the adjecent vertices
-        try:
-            if maze_array[x-1][y]==1:       
-                    count+=1
-            if maze_array[x+1][y]==1:
-                    count+=1
-        except IndexError:
-            return False
-        try:        
-            if maze_array[x][y-1]==1:
-                    count+=1
-            if maze_array[x][y+1]==1:
-                    count+=1
-        except IndexError:
-            return False
+        if x==0 or x==(len(maze_array)-1) or y==0 or y==(len(maze_array[0])-1):
+                return False
+        else:
+                if maze_array[x-1][y]==1:       
+                        count+=1
+                if maze_array[x+1][y]==1:
+                        count+=1        
+                if maze_array[x][y-1]==1:
+                        count+=1
+                if maze_array[x][y+1]==1:
+                        count+=1
         if count==3:
             return True
         else:
             return False
-                # VERY BIG NOTICE!!!! Apparently when the location is the finish it somehow also counts it as a dead end. In otherwords a location that is out of bound is counted as 1. I do not know why (yet)
-    #I added this method, because suppose you only have 1 dead end left. It goes from the dead end to the finish line. 
-    #In between the dead end and finish line is your starting point. Hence, you require this method such that the dead end stops at your starting point
-    #See test case 1 and try to do it with hand!
+             
     def is_starting_pos(self,x,y):
         if maze_array(x,y)==2: #If the starting location is the dead end you don't want to use the algorithm down below either
             return True
