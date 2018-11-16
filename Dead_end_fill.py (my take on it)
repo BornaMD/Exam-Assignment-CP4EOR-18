@@ -58,7 +58,7 @@ class dead_end_fill:
 
     def back_track(self,x,y):
         #Step 1: check if its a dead end and not a starting area. If this condition holds, turn the coordinate into a 1
-        if is_dead_end(x,y)==True and is_adjecent_starting_pos(x,y)==False: #See description at is_adjecent_starting_pos
+        if is_dead_end(x,y)==True and is_starting_pos(x,y)==False: #See description at is_adjecent_starting_pos
                 maze_array[x][y]=1
                     #Step 2: Look for the adjecent vertex that is 0. This location is now a dead end (unless you arrive at a junction)
                     #Step 3: Using recursion we turn that coordinate into a 1
