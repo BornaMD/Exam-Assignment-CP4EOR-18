@@ -26,7 +26,7 @@ class dead_end_fill:
         for i in range(self.width):
 
     
-def is_dead_end(self,x,y):
+    def is_dead_end(self,x,y):
         #my idea is that you gain the row and column (x,y)
         #you then check if at least 3 positions are 1. If that is the case then its a dead end.
         count=0
@@ -34,20 +34,14 @@ def is_dead_end(self,x,y):
         if maze_array[x][y]==1:
             return False
         #Check all the adjecent vertices
-        try:
-            if maze_array[x-1][y]==1:       
-                    count+=1
-            if maze_array[x+1][y]==1:
-                    count+=1
-        except IndexError:
-            return False
-        try:        
-            if maze_array[x][y-1]==1:
-                    count+=1
-            if maze_array[x][y+1]==1:
-                    count+=1
-        except IndexError:
-            return False
+        if maze_array[x-1][y]==1 and x!=0:       
+                count+=1
+        if maze_array[x+1][y]==1 and x!=height-1:
+                count+=1
+        if maze_array[x][y-1]==1 and y!=0:
+                count+=1
+        if maze_array[x][y+1]==1 and y!=width-1:
+                count+=1
         if count==3:
             return True
         else:
@@ -81,7 +75,9 @@ def is_dead_end(self,x,y):
             save() #I was intending to add a save function that writes all of this on a new file for clarity. This would also be the new file that the robot walks on.
             return maze_array
             #Note if it reaches the starting position then it will also be seen as a junction. In the end there should be only 1 path left that leads from starting point, 2, to the goal
-            #My take on the algorithm class. I noticed you copied nearly everything from internet. This is fine, however it makes understanding it a bit more complex. I personally used very common methods to write it. 
+
+            #My take on the algorithm class. I noticed you copied nearly everything from internet. This is fine, however it makes understanding it a bit more complex. Moreover not every part is needed. 
+            I personally used very common methods to write it. 
 #Its not complete yet though. There are a few issues left:
 #1) Somehow any adjecent values that are out of bound are also counted as impenetrable pathing. As results, the goal is seen as a dead end
 #2) I was intending to write a save function so that the new array can be used for the robot. The new array will only have an optimal path left.
