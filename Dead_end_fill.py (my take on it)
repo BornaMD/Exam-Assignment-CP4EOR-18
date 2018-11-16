@@ -1,0 +1,80 @@
+class dead_end_fill:
+    def __init__(self)
+        fh = open("maze1.txt", "r")
+        content = fh.readlines()
+            # maze_array is a two-dimensional array with the entire maze (integers):
+        maze_array = []
+                # Fill maze_array with numbers from file:
+        for i in range(len(content)):
+            line = str(content[i]).strip()
+            linelist = []
+            for element in line:
+                linelist.append(int(element))
+            maze_array.append(linelist)
+        fh.close()
+        self.row = 0
+        self.column = 0
+        self.width = len(maze_array[1])
+        self.height = len(maze_array)
+        for i in range(self.width):
+            for j in range(self.height):
+                if maze_array[i][j].is_dead_end()==True:
+                    maze_array[i][j].back_track()
+
+    def __save(self):
+        fo=open("maze1.txt","w")
+        for i in range(self.width):
+
+    
+    def is_dead_end(self,x,y):
+        #my idea is that you gain the row and column (x,y)
+        #you then check if at least 3 positions are 1. If that is the case then its a dead end.
+        count=0
+        #if your current position is a 1 then by default it can't be a dead end
+        if maze_array[x][y]==1:
+            return False
+        #Check all the adjecent vertices
+        if maze_array[x-1][y]==1:       
+                count+=1
+        if maze_array[x+1][y]==1:
+                count+=1        
+        if maze_array[x][y-1]==1:
+                count+=1
+        if maze_array[x][y+1]==1:
+                count+=1
+        if count==3:
+            return True
+        else:
+            return False
+                # VERY BIG NOTICE!!!! Apparently when the location is the finish it somehow also counts it as a dead end. In otherwords a location that is out of bound is counted as 1. I do not know why (yet)
+    def is_adjecent_starting_pos(self,x,y):
+        if maze_array[x-1][y]==2:
+            return True  
+        elif maze_array[x+1][y]==2:
+            return True
+        elif maze_array[x][y-1]==2:
+            return True
+        elif maze_array[x][y+1]==2:
+            return True
+        else:
+            return False:
+
+    def back_track(self,x,y):
+        #Step 1: check if its a dead end. If yes, turn the coordinate into a 1
+        if is_dead_end(x,y)==True and is_adjecent_starting_pos(x,y)==False:
+                maze_array[x][y]=1
+                    #Step 2: Look for the adjecent vertex that is 0. This location is now a dead end (unless you arrive at a junction)
+                    #Step 3: Using recursion we turn that coordinate into a 1
+                if  maze_array[x-1][y]==0:  #By default we know there can only be a single 0 in any of these since this is checked in "is_dead_end(x,y)==True:", hence I do not need to put any constraints
+                    return back_track(x-1,y)
+                if maze_array[x+1][y]==0:
+                    return back_track(x+1,y)
+                if maze_array[x][y-1]==0:
+                    return back_track(x,y-1)
+                if maze_array[x][y+1]==0:
+                    return back_track(x,y+1)
+        #Step 4: This continues until there is no dead end left. If its no longer a dead end, stop the algorithm.
+        else:
+            save() #I was intending to add a save function that writes all of this on a new file for clarity. This would also be the new file that the robot walks on.
+            return maze_array
+            #Note if it reaches the starting position then it will also be seen as a junction. In the end there should be only 1 path left that leads from starting point, 2, to the goal
