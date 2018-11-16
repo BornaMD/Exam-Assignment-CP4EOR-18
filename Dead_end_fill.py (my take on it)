@@ -34,7 +34,7 @@ def is_dead_end(self,x,y):
         if maze_array[x][y]==1:
             return False
         #Check all the adjecent vertices
-        if x==0 or x==(len(maze_array)-1) or y==0 or y==(len(maze_array[0])-1):
+        if x==0 or x==(len(maze_array)-1) or y==0 or y==(len(maze_array[0])-1): #these locations are the finish line hence can't be dead end
                 return False
         else:
                 if maze_array[x-1][y]==1:       
