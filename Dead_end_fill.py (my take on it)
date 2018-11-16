@@ -75,4 +75,8 @@ class dead_end_fill:
             save() #I was intending to add a save function that writes all of this on a new file for clarity. This would also be the new file that the robot walks on.
             return maze_array
             #Note if it reaches the starting position then it will also be seen as a junction. In the end there should be only 1 path left that leads from starting point, 2, to the goal
-
+            #My take on the algorithm class. I noticed you copied nearly everything from internet. This is fine, however it makes understanding it a bit more complex. I personally used very common methods to write it. 
+#Its not complete yet though. There are a few issues left:
+#1) Somehow any adjecent values that are out of bound are also counted as impenetrable pathing. As results, the goal is seen as a dead end
+#2) I was intending to write a save function so that the new array can be used for the robot. The new array will only have an optimal path left.
+#3) I have yet to test the later part of my code. Hence, I am 1000% certain that it will require some debugging.
