@@ -49,7 +49,10 @@ def is_dead_end(self,x,y):
             return True
         else:
             return False
-             
+    
+     #I added this method, because suppose you only have 1 dead end left. It goes from the dead end to the finish line. 
+    #In between the dead end and finish line is your starting point. Hence, you require this method such that the dead end stops at your starting point
+    #See test case 1 and try to do it with hand!
     def is_starting_pos(self,x,y):
         if maze_array(x,y)==2: #If the starting location is the dead end you don't want to use the algorithm down below either
             return True
@@ -77,7 +80,7 @@ def is_dead_end(self,x,y):
             #Note if it reaches the starting position then it will also be seen as a junction. In the end there should be only 1 path left that leads from starting point, 2, to the goal
             #My take on the algorithm class. I noticed you copied nearly everything from internet. This is fine, however it makes understanding it a bit more complex. I personally used very common methods to write it. 
 #Its not complete yet though. There are a few issues left:
-#1) Somehow any adjecent values that are out of bound are also counted as impenetrable pathing. As results, the goal is seen as a dead end
+#1) SOLVED
 #2) I was intending to write a save function so that the new array can be used for the robot. The new array will only have an optimal path left.
 #3) I have yet to test the later part of my code. Hence, I am 1000% certain that it will require some debugging.
 #4) I opened the mase1.txt file, but its better to drag the maze from the maze class instead. Basically its like merging things together so that it moves fluently.
