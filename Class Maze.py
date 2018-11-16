@@ -17,8 +17,8 @@ class Maze:
         # Coordinates of this finish line. Start at (0, 0):
         row = 0
         column = 0
-        width = len(maze_array[1])-1
-        height = len(maze_array)-1
+        width = len(maze_array[1])
+        height = len(maze_array)
         success = 0
         # Check the upper row:
         for i in range(width):
@@ -59,5 +59,19 @@ class Maze:
                     row += 1
         # Save finish coordinate as attribute:
         self.finish = [row, column]
+
+        # Finding the starting position
+        starting_pos=[]
+       
+        for i in range(height):
+            for j in range(width):
+                if maze_array[i][j]==2:
+                    starting_pos.append([i,j])
+        # Create an object of the class robot with the starting position
+        test=robot(starting_pos)
+
+        # a method that returns the location of the finish
+        def get_finish(self):
+            return self.finish
 
 
