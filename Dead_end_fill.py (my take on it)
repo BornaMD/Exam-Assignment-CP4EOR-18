@@ -26,7 +26,7 @@ class dead_end_fill:
         for i in range(self.width):
 
     
-    def is_dead_end(self,x,y):
+def is_dead_end(self,x,y):
         #my idea is that you gain the row and column (x,y)
         #you then check if at least 3 positions are 1. If that is the case then its a dead end.
         count=0
@@ -34,14 +34,20 @@ class dead_end_fill:
         if maze_array[x][y]==1:
             return False
         #Check all the adjecent vertices
-        if maze_array[x-1][y]==1:       
-                count+=1
-        if maze_array[x+1][y]==1:
-                count+=1        
-        if maze_array[x][y-1]==1:
-                count+=1
-        if maze_array[x][y+1]==1:
-                count+=1
+        try:
+            if maze_array[x-1][y]==1:       
+                    count+=1
+            if maze_array[x+1][y]==1:
+                    count+=1
+        except IndexError:
+            return False
+        try:        
+            if maze_array[x][y-1]==1:
+                    count+=1
+            if maze_array[x][y+1]==1:
+                    count+=1
+        except IndexError:
+            return False
         if count==3:
             return True
         else:
