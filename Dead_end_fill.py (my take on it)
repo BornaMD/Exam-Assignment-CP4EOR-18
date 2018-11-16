@@ -47,6 +47,9 @@ class dead_end_fill:
         else:
             return False
                 # VERY BIG NOTICE!!!! Apparently when the location is the finish it somehow also counts it as a dead end. In otherwords a location that is out of bound is counted as 1. I do not know why (yet)
+    #I added this method, because suppose you only have 1 dead end left. It goes from the dead end to the finish line. 
+    #In between the dead end and finish line is your starting point. Hence, you require this method such that the dead end stops at your starting point
+    #See test case 1 and try to do it with hand!
     def is_adjecent_starting_pos(self,x,y):
         if maze_array[x-1][y]==2:
             return True  
