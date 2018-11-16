@@ -80,3 +80,4 @@ class dead_end_fill:
 #1) Somehow any adjecent values that are out of bound are also counted as impenetrable pathing. As results, the goal is seen as a dead end
 #2) I was intending to write a save function so that the new array can be used for the robot. The new array will only have an optimal path left.
 #3) I have yet to test the later part of my code. Hence, I am 1000% certain that it will require some debugging.
+#4) I opened the mase1.txt file, but its better to drag the maze from the maze class instead. Basically its like merging things together so that it moves fluently.
