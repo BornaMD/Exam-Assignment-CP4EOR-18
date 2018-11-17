@@ -40,7 +40,7 @@ class Maze:
                     success = 1
                     break
                 if maze_array[row][width-1] == 0:
-                    succes = 1
+                    success = 1
                     column = width-1
                     break
                 else:
