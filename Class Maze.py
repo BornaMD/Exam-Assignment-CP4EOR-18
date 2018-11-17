@@ -20,40 +20,28 @@ class Maze:
         width = len(maze_array[1])
         height = len(maze_array)
         success = 0
-        # Check the upper row:
+        # Check the upper and lower rows:
         for i in range(width):
-            if maze_array[row][column] == 0:
+            if maze_array[0][column] == 0:
                 success = 1
+                break
+            if maze_array[height-1][column] == 0:
+                success = 1
+                row = height-1
                 break
             else:
                 column += 1
-        # Check the lower row:
+        # Check left and right sides (lowest en highest positions were already checked, so it starts at 1 and ends at height-1):
         if success == 0:
-            row = height
+            row = 1
             column = 0
-            for j in range(width):
-                if maze_array[row][column] == 0:
+            for k in range(1,height-1):
+                if maze_array[row][0] == 0:
                     success = 1
                     break
-                else:
-                    column += 1
-        # Check left side:
-        if success == 0:
-            row = 0
-            column = 0
-            for k in range(height):
-                if maze_array[row][column] == 0:
-                    success = 1
-                    break
-                else:
-                    row += 1
-        #Check right side:
-        if success == 0:
-            row = 0
-            column = width
-            for l in range(height):
-                if maze_array[row][column] == 0:
-                    success = 1
+                if maze_array[row][width-1] == 0:
+                    succes = 1
+                    column = width-1
                     break
                 else:
                     row += 1
@@ -73,5 +61,4 @@ class Maze:
         # a method that returns the location of the finish
         def get_finish(self):
             return self.finish
-
 
