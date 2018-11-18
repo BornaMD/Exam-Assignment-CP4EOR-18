@@ -117,10 +117,10 @@ def walking(x,y,u,v,i):
         
 x=starting_pos[0]
 y=starting_pos[1]
-u=1
-v=5
+u=6
+v=10
 i=2
-c1=walking(x,y,u,v,i)
+walking(x,y,u,v,i)
 # print() 
 # print(maze_array)#Turn all these below on and make sure the upper items are on/off then turn it on and it will work
 # print(is_dead_end(5,1,3))
@@ -145,5 +145,5 @@ c1=walking(x,y,u,v,i)
 # # print(maze_array)
 # print(x)
 # print(y)
-
+print(maze_array)
 
