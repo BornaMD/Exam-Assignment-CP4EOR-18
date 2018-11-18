@@ -71,7 +71,7 @@ def Finish(x,y,u,v):
                 return False
 
 def back_track(x,y,u,v,i):
-    maze_array[x][y]=1
+    maze_array[x][y]="X"
     if maze_array[x-1][y]==i:
         return back_track(x-1,y,u,v,i)
     elif maze_array[x+1][y]==i:
@@ -82,32 +82,32 @@ def back_track(x,y,u,v,i):
         return back_track(x,y+1,u,v,i)
     else:
         maze_array[x][y]=i-1
-        # return walking(x,y,u,v,i-1) #turn this off and run each stap manually and it will work
-        return maze_array #turn this on and run each step manually and it will work
+        return walking(x,y,u,v,i-1) #turn this off and run each stap manually and it will work
+        # return maze_array,x,y #turn this on and run each step manually and it will work
         
         
         # Still trying to figure out where the mistakes is
 
 def walking(x,y,u,v,i):
-        if is_junction(x,y)==False and is_dead_end(x,y,i)==False and Finish(x,y,u,v)==False:
+        if is_junction(x,y)==False and is_dead_end(x,y,i)==False:
                 maze_array[x][y]=i 
                 if maze_array[x-1][y]==0:       
                         return walking(x-1,y,u,v,i)
-                elif maze_array[x+1][y]==0:
+                if maze_array[x+1][y]==0:
                         return walking(x+1,y,u,v,i)      
-                elif maze_array[x][y-1]==0:
+                if maze_array[x][y-1]==0:
                         return walking(x,y-1,u,v,i)
-                elif maze_array[x][y+1]==0:
+                if maze_array[x][y+1]==0:
                         return walking(x,y+1,u,v,i) 
         elif is_junction(x,y)==True:
                 maze_array[x][y]=i+1
                 if maze_array[x-1][y]==0:       
                         return walking(x-1,y,u,v,i+1)
-                elif maze_array[x+1][y]==0:
+                if maze_array[x+1][y]==0:
                         return walking(x+1,y,u,v,i+1)        
-                elif maze_array[x][y-1]==0:
+                if maze_array[x][y-1]==0:
                         return walking(x,y-1,u,v,i+1)
-                elif maze_array[x][y+1]==0:
+                if maze_array[x][y+1]==0:
                         return walking(x,y+1,u,v,i+1)
         elif is_dead_end(x,y,i)==True:
                 return back_track(x,y,u,v,i)
@@ -117,32 +117,33 @@ def walking(x,y,u,v,i):
         
 x=starting_pos[0]
 y=starting_pos[1]
-u=6
-v=10
-j=0
+u=1
+v=5
 i=2
-walking(x,y,v,u,i)
-print() 
-print(maze_array)#Turn all these below on and make sure the upper items are on/off then turn it on and it will work
-print(is_dead_end(5,1,3))
-walking(5,1,6,10,3)
-print()
-print(maze_array)
-print(is_junction(5,4))
-walking(5,4,6,10,3)
-print()
-print(maze_array)
-walking(5,4,6,10,3)
-print()
-print(maze_array)
-walking(3,1,6,10,2)
-print()
-print(maze_array)
-walking(1,2,6,10,2)
-print()
-print(maze_array)
-walking(4,9,6,10,2)
-print()
-print(maze_array)
+c1=walking(x,y,u,v,i)
+# print() 
+# print(maze_array)#Turn all these below on and make sure the upper items are on/off then turn it on and it will work
+# print(is_dead_end(5,1,3))
+# walking(5,1,6,10,3)
+# print()
+# print(maze_array)
+# print(is_junction(5,4))
+# walking(5,4,6,10,3)
+# print()
+# print(maze_array)
+# walking(5,4,6,10,3)
+# print()
+# print(maze_array)
+# walking(3,1,6,10,2)
+# print()
+# print(maze_array)
+# c1=walking(1,2,6,10,2)
+# print()
+# print(maze_array)
+# # walking(4,9,6,10,2)
+# # print()
+# # print(maze_array)
+# print(x)
+# print(y)
 
 
