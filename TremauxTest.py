@@ -89,7 +89,7 @@ def back_track(x,y,u,v,i):
         # Still trying to figure out where the mistakes is
 
 def walking(x,y,u,v,i):
-        if is_junction(x,y)==False and is_dead_end(x,y,i)==False:
+        if is_junction(x,y)==False and is_dead_end(x,y,i)==False and Finish(x,y,u,v)==False:
                 maze_array[x][y]=i 
                 if maze_array[x-1][y]==0:       
                         return walking(x-1,y,u,v,i)
