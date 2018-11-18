@@ -110,7 +110,6 @@ def walking(x,y,u,v,i):
                 elif maze_array[x][y+1]==0:
                         return walking(x,y+1,u,v,i+1)
         elif is_dead_end(x,y,i)==True:
-                maze_array[x][y]=i
                 return back_track(x,y,u,v,i)
         elif Finish(x,y,u,v)==True:
                 maze_array[x][y]=i 
@@ -123,8 +122,8 @@ v=10
 j=0
 i=2
 walking(x,y,v,u,i)
-print() #Turn all these below on and make sure the upper items are on/off then turn it on and it will work
-print(maze_array)
+print() 
+print(maze_array)#Turn all these below on and make sure the upper items are on/off then turn it on and it will work
 print(is_dead_end(5,1,3))
 walking(5,1,6,10,3)
 print()
@@ -145,4 +144,5 @@ print(maze_array)
 walking(4,9,6,10,2)
 print()
 print(maze_array)
+
 
