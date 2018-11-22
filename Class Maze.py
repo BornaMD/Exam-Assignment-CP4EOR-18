@@ -66,5 +66,5 @@ class Maze:
         threebythree = [[],[],[]]
         for i in range(-1,2):
             for j in range(-1,2):
-                threebythree[j+1] += self.maze_array[pos[0]+j][pos[1]+i]
+                threebythree[j+1] += [self.maze_array[pos[0]+j][pos[1]+i]]
         return threebythree
