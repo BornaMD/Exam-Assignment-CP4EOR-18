@@ -63,7 +63,7 @@ class Maze:
         return self.maze_array
     # Method that returns a 3x3 list containing all tiles adjacent to pos
     def get_neighbourhood(self,pos):
-        threebythree = [[][][]]
+        threebythree = [[],[],[]]
         for i in range(-1,2):
             for j in range(-1,2):
                 threebythree[j+1] += self.maze_array[pos[0]+j][pos[1]+i]
