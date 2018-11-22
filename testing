@@ -1,0 +1,210 @@
+class Maze:
+    def __init__(self):
+        # Open the file:
+        fh = open("maze1.txt", "r")
+        content = fh.readlines()
+        # maze_array is a two-dimensional array with the entire maze (integers):
+        maze_array = []
+        # Fill maze_array with numbers from file:
+        for i in range(len(content)):
+            line = str(content[i]).strip()
+            linelist = []
+            for element in line:
+                linelist.append(int(element))
+            maze_array.append(linelist)
+        self.maze_array = maze_array
+        # Find finish of maze, i.e. zero on the side:
+        # Coordinates of this finish line. Start at (0, 0):
+        row = 0
+        column = 0
+        width = len(maze_array[1])
+        height = len(maze_array)
+        success = 0
+        # Check the upper and lower rows:
+        for i in range(width):
+            if maze_array[0][column] == 0:
+                success = 1
+                break
+            if maze_array[height-1][column] == 0:
+                success = 1
+                row = height-1
+                break
+            else:
+                column += 1
+        # Check left and right sides (lowest en highest positions were already checked, so it starts at 1 and ends at height-1):
+        if success == 0:
+            row = 1
+            column = 0
+            for k in range(1,height-1):
+                if maze_array[row][0] == 0:
+                    success = 1
+                    break
+                if maze_array[row][width-1] == 0:
+                    success = 1
+                    column = width-1
+                    break
+                else:
+                    row += 1
+        # Save finish coordinate as attribute:
+        self.finish = [row, column]
+
+        # Finding the starting position
+        starting_pos=[]
+       
+        for i in range(height):
+            for j in range(width):
+                if maze_array[i][j]==2:
+                    starting_pos.append([i,j])
+        # Create an object of the class robot with the starting position
+        # test=robot(starting_pos)
+
+        # a method that returns the location of the finish
+        def get_finish(self):
+            return self.finish
+        
+        def get_grid(self):
+            return maze_array
+
+        def get_neighbourhood(self,pos):
+            x=pos[0]-1
+            y=pos[1]-1
+            neighbour=[]
+            countY=0
+            for i in range(3):
+                y=pos[1]-1
+                x=x+1
+                for j in range(3):
+                    neighbour.append(maze_array[x][y])
+                    y=y+1
+                    
+c1=Maze()
+pos=[3,3]
+print(c1.get_neighbourhood(pos))
+
+# class Tremaux(): 
+# fh = open("maze1.txt", "r")
+# content = fh.readlines()
+#     # maze_array is a two-dimensional array with the entire maze (integers):
+# maze_array = []
+#         # Fill maze_array with numbers from file:
+# for i in range(len(content)):
+#     line = str(content[i]).strip()
+#     linelist = []
+#     for element in line:
+#         linelist.append(int(element))
+#     maze_array.append(linelist)
+# fh.close()
+# row = 0
+# column = 0
+# width = len(maze_array[1])
+# height = len(maze_array)
+# starting_pos=[]
+# for i in range(height):
+#         for j in range(width):
+#                 if maze_array[i][j]==2:
+#                         starting_pos.append(i)
+#                         starting_pos.append(j)
+# # print(maze_array)
+
+# def is_dead_end(x,y,i):
+#         count=0
+#         if maze_array[x][y]==1:
+#                 return False
+#         if x==0 or x==(len(maze_array)-1) or y==0 or y==(len(maze_array[0])-1):
+#                 return False
+#         elif maze_array[x][y]==i and (maze_array[x+1][y]==0 or maze_array[x-1][y]==0 or maze_array[x][y-1]==0 or maze_array[x][y+1]==0):
+#                 return False
+#         else:
+#                 if maze_array[x-1][y]!=0 and maze_array[x-1][y]!=i:       
+#                         count+=1
+#                 if maze_array[x+1][y]!=0 and maze_array[x+1][y]!=i:
+#                         count+=1        
+#                 if maze_array[x][y-1]!=0 and maze_array[x][y-1]!=i:
+#                         count+=1
+#                 if maze_array[x][y+1]!=0 and maze_array[x][y+1]!=i:
+#                         count+=1
+#         if count==3:
+#                 return True
+#         else:
+#                 return False
+
+# def is_junction(x,y):
+#     count=0
+#     if maze_array[x][y]==1:
+#         return False
+#     if x==0 or x==(len(maze_array)-1) or y==0 or y==(len(maze_array[0])-1):
+#         return False
+#     else:
+#         if maze_array[x-1][y]==0:       
+#                 count+=1
+#         if maze_array[x+1][y]==0:
+#                 count+=1        
+#         if maze_array[x][y-1]==0:
+#                 count+=1
+#         if maze_array[x][y+1]==0:
+#                 count+=1
+#     if count>=2:
+#         return True
+#     else:
+#         return False
+
+# def Finish(x,y,u,v):
+#         if x==u and y==v:
+#                 return True
+#         else:
+#                 return False
+
+# def back_track(x,y,u,v,i):
+#     maze_array[x][y]="X"
+#     if maze_array[x-1][y]==i:
+#         return back_track(x-1,y,u,v,i)
+#     elif maze_array[x+1][y]==i:
+#         return back_track(x+1,y,u,v,i)
+#     elif maze_array[x][y-1]==i:
+#         return back_track(x,y-1,u,v,i)
+#     elif maze_array[x][y+1]==i:
+#         return back_track(x,y+1,u,v,i)
+#     else:
+#         maze_array[x][y]=i-1
+#         return walking(x,y,u,v,i-1) #turn this off and run each stap manually and it will work
+#         # return maze_array,x,y #turn this on and run each step manually and it will work
+        
+        
+#         # Still trying to figure out where the mistakes is
+
+# def walking(x,y,u,v,i):
+#         if is_junction(x,y)==False and is_dead_end(x,y,i)==False and Finish(x,y,u,v)==False:
+#                 maze_array[x][y]=i 
+#                 if maze_array[x-1][y]==0:       
+#                         return walking(x-1,y,u,v,i)
+#                 if maze_array[x+1][y]==0:
+#                         return walking(x+1,y,u,v,i)      
+#                 if maze_array[x][y-1]==0:
+#                         return walking(x,y-1,u,v,i)
+#                 if maze_array[x][y+1]==0:
+#                         return walking(x,y+1,u,v,i) 
+#         elif is_junction(x,y)==True:
+#                 maze_array[x][y]=i+1
+#                 if maze_array[x-1][y]==0:       
+#                         return walking(x-1,y,u,v,i+1)
+#                 if maze_array[x+1][y]==0:
+#                         return walking(x+1,y,u,v,i+1)        
+#                 if maze_array[x][y-1]==0:
+#                         return walking(x,y-1,u,v,i+1)
+#                 if maze_array[x][y+1]==0:
+#                         return walking(x,y+1,u,v,i+1)
+#         elif is_dead_end(x,y,i)==True:
+#                 return back_track(x,y,u,v,i)
+#         elif Finish(x,y,u,v)==True:
+#                 maze_array[x][y]=i 
+#                 return maze_array
+        
+# x=starting_pos[0]
+# y=starting_pos[1]
+# u=6
+# v=10
+# i=2
+# walking(x,y,u,v,i)
+
+# print(maze_array)
+
