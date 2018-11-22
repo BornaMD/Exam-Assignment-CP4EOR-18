@@ -1,7 +1,7 @@
 class Maze:
-    def __init__(self):
+    def __init__(self, file):
         # Open the file:
-        fh = open("maze1.txt", "r")
+        fh = open(str(file), "r")
         content = fh.readlines()
         # maze_array is a two-dimensional array with the entire maze (integers):
         maze_array = []
@@ -12,6 +12,7 @@ class Maze:
             for element in line:
                 linelist.append(int(element))
             maze_array.append(linelist)
+        self.maze_array = maze_array
         # Find finish of maze, i.e. zero on the side:
         # Coordinates of this finish line. Start at (0, 0):
         row = 0
@@ -46,18 +47,24 @@ class Maze:
                     row += 1
         # Save finish coordinate as attribute:
         self.finish = [row, column]
-
         # Finding the starting position
         starting_pos=[]
-       
         for i in range(height):
             for j in range(width):
                 if maze_array[i][j]==2:
                     starting_pos.append([i,j])
         # Create an object of the class robot with the starting position
-        test=robot(starting_pos)
-
-        # a method that returns the location of the finish
-        def get_finish(self):
-            return self.finish
-
+        test=Robot(starting_pos)
+    # Method that returns the location of the finish
+    def get_finish(self):
+        return self.finish
+    # Method that returns the list containing the maze
+    def get_grid(self):
+        return self.maze_array
+    # Method that returns a 3x3 list containing all tiles adjacent to pos
+    def get_neighbourhood(self,pos):
+        threebythree = [[][][]]
+        for i in range(-1,2):
+            for j in range(-1,2):
+                threebythree[j+1] += self.maze_array[pos[0]+j][pos[1]+i]
+        return threebythree
