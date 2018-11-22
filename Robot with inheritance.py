@@ -69,14 +69,13 @@ class Maze:
         threebythree[j+1] += [self.maze_array[pos[0]+j][pos[1]+i]]
     return threebythree
 
-class Robot(Maze):
+class Robot:
 
-  def __init__(self,current_pos,maze):
-    Maze.__init__(self.)
+  def __init__(self,current_pos,Maze):
+    self.maze=Maze()
     self.current_pos = current_pos
     self.last_pos = self.current_pos
     
-
   def change_pos(self, pos):
     self.last_pos = self.current_pos
     self.current_pos = self.pos
