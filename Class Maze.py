@@ -54,7 +54,7 @@ class Maze:
                 if maze_array[i][j]==2:
                     starting_pos.append([i,j])
         # Create an object of the class robot with the starting position
-        test=Robot(starting_pos)
+        self.Robot = Robot(self.starting_pos,self.maze_array)
     # Method that returns the location of the finish
     def get_finish(self):
         return self.finish
