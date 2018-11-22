@@ -12,7 +12,6 @@ class Maze:
             for element in line:
                 linelist.append(int(element))
             maze_array.append(linelist)
-        self.maze_array = maze_array
         # Find finish of maze, i.e. zero on the side:
         # Coordinates of this finish line. Start at (0, 0):
         row = 0
