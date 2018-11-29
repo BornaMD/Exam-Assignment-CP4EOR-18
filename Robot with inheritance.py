@@ -91,6 +91,8 @@ class Robot:
       return True
     else:
       return False
+  def take_one_step():
+
 
 
 
