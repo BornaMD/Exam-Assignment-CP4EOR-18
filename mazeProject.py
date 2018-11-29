@@ -77,21 +77,21 @@ class Robot(Maze):
     
     #Create a method which returns dictionary of options:
     def walk_options(self):
-        dictionary={}
+        def walk_options(self):
         options={}
-        if self.currentPos==0 and self.lastDirection=="Left":
-            options["Left"]=self.currentPos
-            options.update(options)
-        elif self.currentPos==0 and self.lastDirection=="Right":
-            options["Right"]=self.currentPos
-            options.update(options)
-        elif self.currentPos==0 and self.lastDirection=="Top":
-            options["Up"]==self.currentPos
-            options.update(options)
-        else self.currentPos==0 and self.lastDirection=="Down:
-            options["Down"]=self.currentPos
-            options.update(options)
-        dictionary.update(options)
+        hood=self.Maze.get_neighbourhood(self.currentPos)
+        pos=self.get_pos()
+        r=pos[0]
+        c=pos[1]
+        if hood[0][1] == "0":
+            options["up"] = [y-1,x] 
+        if hood[2][1] == "0":
+            options["down"] = [y+1,x]
+        if hood[1][2] == "0":
+            options["right"] = [y,x+1]    
+        if hood[1][0] == "0":
+            options["left"] = [y,x-1]
+        return options
 
     #Create a method which will change the last direction of the Robot:
     #def change_direction
