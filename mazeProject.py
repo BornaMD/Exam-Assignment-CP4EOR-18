@@ -77,7 +77,7 @@ class Robot(Maze):
     
     #Create a method which returns dictionary of options:
     def walk_options(self):
-        def walk_options(self):
+        #def walk_options(self):
         options={}
         hood=self.Maze.get_neighbourhood(self.currentPos)
         pos=self.get_pos()
@@ -97,7 +97,7 @@ class Robot(Maze):
     #def change_direction
     def change_direction(self):
         count=0
-        for i in self.walk_options().options:
+        for i in self.walk_options():
             if self.lastDirection==i:#if the current direction is in the options
                 count=1
         if count==1:
@@ -105,7 +105,7 @@ class Robot(Maze):
             #We change its direction below
             #I have it set to randomly choose a different direction
             #but you can change the line below if ya like
-        self.lastDirection=random.choice(list(self.walk_options().options)) 
+        self.lastDirection=random.choice(list(self.walk_options())) 
         return self.lastDirection
     
     #Create a method which returns boolean if the robot is at the finish:
