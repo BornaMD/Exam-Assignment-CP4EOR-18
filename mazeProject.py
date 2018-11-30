@@ -41,7 +41,7 @@ class Maze:
                 if maze[r][c]==2:
                     self.start=[r,c]
                     #print(self.start)
-        self.robot=Robot(self.start,self.maze)
+        self.robot=Robot(self.start)
        
     #Create a method which returns the location of the finish of the maze:
     def get_finish(self):
