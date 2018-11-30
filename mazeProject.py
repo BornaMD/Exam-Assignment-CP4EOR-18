@@ -116,9 +116,14 @@ class Robot(Maze):
             return False
 
     #Create navigation algorithm
-    #def take_one_step(robot):    
-
-
+    def take_one_step(robot):    
+       if self.lastDirection!="up" or self.lastDirection!="down" or self.lastDirection!="right" or self.lastDirection!="left": 
+            self.change_direction()#if the last direction is still not defined yet such as an open string then we choose a direction
+        self.change_pos(walk_options().options[self.lastDirection])
+        #change the position by the dictorial list containing lastdirection
+        #for example change pos requires a list of 2 integers. Suppose your last direction is "up" then find the coordinates of "up"
+        #this is my intention with walk_options() method and its attribute options[lastDirection]
+        #still have to add changing direction if you hit a wall with the current direction (example LastDirection is up and up is a wall)
         
 
 
