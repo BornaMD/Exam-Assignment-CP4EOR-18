@@ -98,15 +98,15 @@ class Robot(Maze):
     def change_direction(self):
         count=0
         for i in self.walk_options():
-            if self.lastDirection==i:#if the current direction is in the options
+            if self.lastDirection==i:#check if the current last direction is in the possibilities
                 count=1
         if count==1:
-            self.options.pop(self.lastDirection,None)#you remove the possibility of it taking the same direction
+            self.walk_options.pop(self.lastDirection,None)#removing the current last direction out of the dictorial list
             #We change its direction below
             #I have it set to randomly choose a different direction
             #but you can change the line below if ya like
         self.lastDirection=random.choice(list(self.walk_options())) 
-        return self.lastDirection
+        return self.lastDirection #return a new direction
     
     #Create a method which returns boolean if the robot is at the finish:
     def is_finished(self):
