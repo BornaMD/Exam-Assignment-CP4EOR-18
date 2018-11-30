@@ -95,7 +95,16 @@ class Robot(Maze):
 
     #Create a method which will change the last direction of the Robot:
     #def change_direction
-
+    def change_direction(self):
+        count=0
+        for i in self.walk_options().options:
+            if self.lastDirection==i:
+                count=1
+        if count==1:
+            self.options.pop(self.lastDirection,None)
+        self.lastDirection=random.choice(list(self.walk_options().options))
+        return self.lastDirection
+    
     #Create a method which returns boolean if the robot is at the finish:
     def is_finished(self):
         if self.currentPos==self.get_finish():
